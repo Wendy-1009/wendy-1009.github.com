@@ -1,1 +1,610 @@
-今天日期是115/11/15
+<!-- 檔名：index.html -->
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Google Search Console 驗證標記（未來取得後請貼在此處） -->
+  <!-- <meta name="google-site-verification" content="（請貼上你的驗證碼）" /> -->
+
+  <!-- SEO 基礎設定 -->
+  <title>藍于惠｜社會工作者</title>
+  <meta name="description" content="藍于惠 Wendy 個人網站－兼具助人熱情與結構思維的社會工作者，具備照顧服務員、教保員與社工專業資格，目前於苗栗與金門累積多元社福實務經驗。" />
+  <meta name="keywords" content="藍于惠, Wendy, 社會工作者, 教保員, 照顧服務員, 苗栗社工, 身心障礙照護, 老人服務" />
+  <meta name="author" content="藍于惠 Wendy" />
+  
+  <!-- Canonical & Open Graph 社群分享標籤 -->
+  <link rel="canonical" href="https://your-username.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="藍于惠｜社會工作者" />
+  <meta property="og:description" content="把日子過得有條理，也把生活過得有溫度。兼具助人熱情與結構思維的社會工作者。" />
+  <meta property="og:url" content="https://your-username.github.io/" />
+  <meta property="og:image" content="photo.jpg" />
+
+  <!-- Emoji Favicon 網站小圖示 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>" />
+
+  <!-- Google Fonts：書卷文青字體搭配 (Noto Serif TC + Noto Sans TC) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+          },
+          colors: {
+            ocean: {
+              50: '#f0f9fa',
+              100: '#d8f1f5',
+              200: '#b5e3eb',
+              300: '#82cedc',
+              400: '#48b0c5',
+              500: '#2d93aa',
+              600: '#28778f',
+              700: '#266175',
+              800: '#275161',
+              900: '#244453',
+            },
+            sand: {
+              50: '#fdfbf7',
+              100: '#f8f3ea',
+              200: '#efe4d2',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- JSON-LD 結構化資料 (Person) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "藍于惠 Wendy",
+    "jobTitle": "社會工作者",
+    "description": "兼具助人熱情與結構思維的社工研究生，外表溫柔但內心很有主見。",
+    "email": "mailto:blue04061999@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "苗栗縣 / 金門縣",
+      "addressCountry": "TW"
+    },
+    "url": "https://your-username.github.io/"
+  }
+  </script>
+
+  <style>
+    /* 小圓點背景質感（淺色模式與深色模式） */
+    .bg-polka {
+      background-color: #fdfbf7;
+      background-image: radial-gradient(#82cedc 1.25px, transparent 1.25px);
+      background-size: 24px 24px;
+    }
+    .dark .bg-polka {
+      background-color: #0f172a;
+      background-image: radial-gradient(#1e3a4c 1.25px, transparent 1.25px);
+      background-size: 24px 24px;
+    }
+
+    /* 柔和海浪漸層裝飾 */
+    .ocean-card {
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+    }
+    .ocean-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* 閱讀進度條平滑過渡 */
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+  </style>
+</head>
+
+<body class="bg-polka text-slate-700 dark:text-slate-200 font-sans text-base leading-relaxed antialiased selection:bg-ocean-200 selection:text-ocean-900 overflow-x-hidden transition-colors duration-300">
+
+  <!-- 互動功能 1：頂部閱讀進度條 -->
+  <div class="fixed top-0 left-0 w-full h-1.5 bg-ocean-100/60 dark:bg-slate-800 z-50">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-ocean-400 via-teal-400 to-sky-400 w-0 rounded-r-full"></div>
+  </div>
+
+  <!-- 頂部導覽列（手機版漢堡選單 + 電腦版極簡導覽 + 深淺色切換） -->
+  <header class="sticky top-1.5 z-40 mx-auto max-w-6xl px-4 sm:px-6 pt-2">
+    <nav class="bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border border-ocean-100 dark:border-slate-700/80 rounded-2xl shadow-sm px-5 py-3 flex items-center justify-between">
+      <!-- 網站名稱 -->
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="w-9 h-9 rounded-xl bg-ocean-100 dark:bg-ocean-900/60 text-ocean-600 dark:text-ocean-300 flex items-center justify-center text-lg shadow-inner group-hover:scale-105 transition-transform">
+          🌊
+        </span>
+        <span class="font-serif font-bold text-lg tracking-wide text-slate-800 dark:text-white">
+          藍于惠 <span class="text-ocean-600 dark:text-ocean-400 font-sans font-medium text-sm">Wendy</span>
+        </span>
+      </a>
+
+      <!-- 電腦版選單 -->
+      <div class="hidden md:flex items-center gap-7 text-base font-medium">
+        <a href="#about" class="hover:text-ocean-600 dark:hover:text-ocean-300 transition-colors">關於我</a>
+        <a href="#experience" class="hover:text-ocean-600 dark:hover:text-ocean-300 transition-colors">經歷時間軸</a>
+        <a href="#services" class="hover:text-ocean-600 dark:hover:text-ocean-300 transition-colors">專業服務</a>
+        <a href="#contact" class="px-4 py-2 rounded-xl bg-ocean-500 hover:bg-ocean-600 text-white shadow-sm transition-all">寫信給我</a>
+      </div>
+
+      <!-- 右側按鈕區：深淺色切換 + 手機漢堡選單 -->
+      <div class="flex items-center gap-2">
+        <!-- 互動功能 2：深淺色切換按鈕 -->
+        <button id="theme-toggle" type="button" aria-label="切換深淺色模式" class="p-2.5 rounded-xl bg-sand-100 dark:bg-slate-800 text-slate-600 dark:text-amber-300 hover:bg-ocean-100 dark:hover:bg-slate-700 transition-colors">
+          <!-- 太陽圖示（深色模式時顯示） -->
+          <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <!-- 月亮圖示（淺色模式時顯示） -->
+          <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <!-- 手機版漢堡選單按鈕 -->
+        <button id="mobile-menu-btn" type="button" aria-label="開啟導覽選單" class="md:hidden p-2.5 rounded-xl bg-ocean-50 dark:bg-slate-800 text-ocean-700 dark:text-ocean-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- 手機版下拉選單 -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-ocean-100 dark:border-slate-700 rounded-2xl p-4 shadow-lg space-y-2">
+      <a href="#about" class="block px-4 py-3 rounded-xl hover:bg-ocean-50 dark:hover:bg-slate-800 font-medium">🌿 關於我</a>
+      <a href="#experience" class="block px-4 py-3 rounded-xl hover:bg-ocean-50 dark:hover:bg-slate-800 font-medium">🧭 經歷時間軸</a>
+      <a href="#services" class="block px-4 py-3 rounded-xl hover:bg-ocean-50 dark:hover:bg-slate-800 font-medium">🤝 專業服務</a>
+      <a href="#contact" class="block px-4 py-3 rounded-xl bg-ocean-500 text-white text-center font-medium mt-2">✉️ 寫信給我</a>
+    </div>
+  </header>
+
+  <!-- 主要版型：結合「C 側邊名片」與「A 經典單頁」的雙欄設計 -->
+  <div id="top" class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- 左側固定名片欄 (C 側邊名片概念) -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-24 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-ocean-100 dark:border-slate-800 rounded-3xl p-6 sm:p-7 shadow-sm text-center">
+        <!-- 個人大頭照 -->
+        <div class="relative w-40 h-40 mx-auto mb-5">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-ocean-300 to-teal-200 dark:from-ocean-700 dark:to-teal-800 blur-md opacity-60"></div>
+          <img 
+            src="photo.jpg" 
+            alt="藍于惠 Wendy 個人照片" 
+            loading="lazy"
+            onerror="this.onerror=null; this.src='https://picsum.photos/seed/wendyportrait/400/400';"
+            class="relative w-40 h-40 rounded-full object-cover object-top border-4 border-white dark:border-slate-800 shadow-md mx-auto"
+          />
+          <span class="absolute bottom-1 right-1 bg-white dark:bg-slate-800 border border-ocean-100 dark:border-slate-700 rounded-full px-2.5 py-1 text-sm shadow-sm" title="溫柔堅定">
+            🐨✨
+          </span>
+        </div>
+
+        <!-- 唯一 H1 標題：名字 -->
+        <h1 class="font-serif text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white tracking-wide">
+          藍于惠 Wendy
+        </h1>
+        <p class="mt-1.5 text-ocean-600 dark:text-ocean-400 font-medium text-base">
+          社會工作者 ｜ 社工系在職碩士生
+        </p>
+
+        <!-- 所在地區 -->
+        <div class="mt-3 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-ocean-50 dark:bg-slate-800 text-ocean-700 dark:text-ocean-300 text-sm">
+          <span>📍</span>
+          <span>苗栗縣市 / 金門縣</span>
+        </div>
+
+        <!-- 三個核心關鍵字膠囊 -->
+        <div class="mt-5 flex flex-wrap justify-center gap-2">
+          <span class="px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 border border-teal-200/70 dark:border-teal-800 text-sm font-medium">
+            #溫柔堅定
+          </span>
+          <span class="px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200/70 dark:border-sky-800 text-sm font-medium">
+            #結構思維
+          </span>
+          <span class="px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 border border-amber-200/70 dark:border-amber-800 text-sm font-medium">
+            #問題解決
+          </span>
+        </div>
+
+        <!-- 關鍵亮點數字小卡（互動功能 3：數字跑動） -->
+        <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 grid grid-cols-3 gap-2 text-center">
+          <div class="p-2 rounded-2xl bg-sand-50 dark:bg-slate-800/60">
+            <div class="font-serif font-bold text-xl text-ocean-600 dark:text-ocean-400">
+              <span class="count-up" data-target="3">0</span>項
+            </div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">跨域實務歷練</div>
+          </div>
+          <div class="p-2 rounded-2xl bg-sand-50 dark:bg-slate-800/60">
+            <div class="font-serif font-bold text-xl text-ocean-600 dark:text-ocean-400">
+              <span class="count-up" data-target="3">0</span>項
+            </div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">照護社福資格</div>
+          </div>
+          <div class="p-2 rounded-2xl bg-sand-50 dark:bg-slate-800/60">
+            <div class="font-serif font-bold text-xl text-ocean-600 dark:text-ocean-400">
+              <span class="count-up" data-target="100">0</span>%
+            </div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">條理與執行力</div>
+          </div>
+        </div>
+
+        <!-- 主要行動按鈕 (CTA) -->
+        <div class="mt-6">
+          <a href="#contact" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-gradient-to-r from-ocean-500 to-teal-500 hover:from-ocean-600 hover:to-teal-600 text-white font-medium shadow-md shadow-ocean-500/20 transition-all">
+            <span>✉️ 寫信與我聯繫</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- 右側主內容區 (A 經典單頁依序展開) -->
+      <main class="lg:col-span-8 space-y-10">
+
+        <!-- 區塊 0：開場 Hero 橫幅卡片 -->
+        <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-ocean-500 via-ocean-600 to-teal-600 text-white p-7 sm:p-10 shadow-md">
+          <!-- 背景裝飾圖片（帶淡出透明度與安全 fallback） -->
+          <img 
+            src="https://picsum.photos/seed/coastalbreeze/1200/600" 
+            alt="海邊清爽風景背景" 
+            loading="lazy"
+            onerror="this.onerror=null; this.style.display='none';"
+            class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay pointer-events-none"
+          />
+          <div class="relative z-10">
+            <span class="inline-block px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-sm text-sm font-medium mb-4">
+              🐚 社會工作與生活日常
+            </span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold leading-snug tracking-wide">
+              「把日子過得有條理，<br class="hidden sm:inline" />也把生活過得有溫度。」
+            </h2>
+            <p class="mt-4 text-ocean-50 text-base sm:text-lg leading-relaxed max-w-2xl">
+              兼具助人熱情與結構思維的社工研究生，外表溫柔但內心很有主見。習慣把生活過得有條理，正朝更理想的自己前進。
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#experience" class="px-5 py-2.5 rounded-xl bg-white text-ocean-700 font-medium hover:bg-ocean-50 transition-colors shadow-sm">
+                查看我的經歷 →
+              </a>
+              <a href="#services" class="px-5 py-2.5 rounded-xl bg-ocean-700/60 hover:bg-ocean-700/80 text-white border border-white/25 font-medium transition-colors">
+                了解專業服務
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 區塊 1：關於我（左右分欄＋暖心引言） -->
+        <section id="about" class="scroll-mt-24 bg-white/95 dark:bg-slate-900/95 border border-ocean-100 dark:border-slate-800 rounded-3xl p-6 sm:p-9 shadow-sm">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-10 h-10 rounded-2xl bg-ocean-100 dark:bg-ocean-900/60 text-ocean-600 dark:text-ocean-300 flex items-center justify-center text-xl">
+              🌿
+            </span>
+            <div>
+              <h2 class="font-serif text-2xl font-bold text-slate-800 dark:text-white">關於我</h2>
+              <p class="text-sm text-slate-500 dark:text-slate-400">About Wendy — 溫柔與邏輯並存的助人者</p>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p>
+              你好，我是<strong class="text-ocean-700 dark:text-ocean-300 font-semibold">藍于惠（Wendy）</strong>，目前是一名在身心障礙機構服務的第一線工作人員，同時也在社會工作學系在職碩士班持續深造。大學時期就讀老人服務相關科系，在實習過程中深刻體會到社會福利工作的價值與溫度，從此堅定了走入助人專業的方向。
+            </p>
+            <p>
+              在工作與團隊合作中，我非常講求<strong class="text-ocean-700 dark:text-ocean-300 font-semibold">邏輯與條理</strong>，習慣把複雜的事務拆解並踏實執行；在追求效率與品質的同時，我也格外重視人與人之間的尊重與真誠，期望每一次溝通都能帶來實質的支持與理解。
+            </p>
+          </div>
+
+          <!-- 兩欄特色卡片：做事原則 vs 工作之外的我 -->
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl bg-ocean-50/70 dark:bg-slate-800/70 border border-ocean-100 dark:border-slate-700">
+              <div class="font-serif font-bold text-ocean-800 dark:text-ocean-300 flex items-center gap-2 mb-2">
+                <span>🧭</span> 別人可能不知道的小事實
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 text-base">
+                外表看起來溫柔隨和，其實內心很有主見！一旦決定好目標，就會展現出超乎想像的執行力與規劃能力。
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-sand-100/80 dark:bg-slate-800/70 border border-amber-200/60 dark:border-slate-700">
+              <div class="font-serif font-bold text-amber-900 dark:text-amber-300 flex items-center gap-2 mb-2">
+                <span>🧳</span> 工作與課業以外的我
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 text-base">
+                是個懂得把生活過好的人。休假時喜歡安排小旅行、探索在地美食，也享受把日常打理得井井有條的成就感。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 區塊 2：經歷時間軸（由近到遠） -->
+        <section id="experience" class="scroll-mt-24 bg-sand-50/95 dark:bg-slate-900/95 border border-ocean-100 dark:border-slate-800 rounded-3xl p-6 sm:p-9 shadow-sm">
+          <div class="flex items-center gap-3 mb-7">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 dark:bg-teal-900/60 text-teal-600 dark:text-teal-300 flex items-center justify-center text-xl">
+              ⏳
+            </span>
+            <div>
+              <h2 class="font-serif text-2xl font-bold text-slate-800 dark:text-white">經歷與成長軌跡</h2>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Experience — 跨領域行政到社福第一線的實務累積</p>
+            </div>
+          </div>
+
+          <!-- 垂直時間軸 -->
+          <div class="relative border-l-2 border-ocean-200 dark:border-ocean-800 ml-3 sm:ml-4 space-y-8 pl-6 sm:pl-8">
+            
+            <!-- 經歷 1（最近：2025.03~） -->
+            <div class="relative">
+              <span class="absolute -left-[33px] sm:-left-[41px] top-1.5 w-4 h-4 rounded-full bg-ocean-500 ring-4 ring-ocean-100 dark:ring-slate-900"></span>
+              <div class="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-ocean-100 dark:border-slate-700 shadow-sm ocean-card">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-0.5 rounded-full bg-ocean-100 dark:bg-ocean-900/70 text-ocean-700 dark:text-ocean-300 text-sm font-medium">
+                    2025.03 ～ 至今
+                  </span>
+                  <span class="text-xs font-medium text-teal-600 dark:text-teal-400">📍 苗栗縣</span>
+                </div>
+                <h3 class="font-serif text-lg sm:text-xl font-bold text-slate-800 dark:text-white">
+                  苗栗縣明德教養院｜教保員
+                </h3>
+                <p class="mt-2.5 text-slate-600 dark:text-slate-300">
+                  投入身心障礙者日常照護、生活自理訓練與個別化支持服務，在細膩陪伴中運用結構化方式協助服務對象穩定生活節奏。
+                </p>
+                <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/70 text-sm text-ocean-700 dark:text-ocean-300">
+                  <strong>✨ 實務收穫：</strong>深化第一線個別化支持觀察力，並與社工在職碩士班所學相互印證。
+                </div>
+              </div>
+            </div>
+
+            <!-- 經歷 2（2023.09~2024.02） -->
+            <div class="relative">
+              <span class="absolute -left-[33px] sm:-left-[41px] top-1.5 w-4 h-4 rounded-full bg-teal-400 ring-4 ring-ocean-100 dark:ring-slate-900"></span>
+              <div class="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-ocean-100 dark:border-slate-700 shadow-sm ocean-card">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium">
+                    2023.09 ～ 2024.02
+                  </span>
+                  <span class="text-xs font-medium text-teal-600 dark:text-teal-400">📍 金門縣</span>
+                </div>
+                <h3 class="font-serif text-lg sm:text-xl font-bold text-slate-800 dark:text-white">
+                  金門縣衛生局｜健康促進專案人員
+                </h3>
+                <p class="mt-2.5 text-slate-600 dark:text-slate-300">
+                  協助地方衛生健康促進專案執行、行政協調與宣導活動規劃，確保各項公衛計畫依時程落實推進。
+                </p>
+                <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/70 text-sm text-ocean-700 dark:text-ocean-300">
+                  <strong>✨ 實務收穫：</strong>熟悉公部門專案行政流程，培養跨單位溝通與社區健康推廣經驗。
+                </div>
+              </div>
+            </div>
+
+            <!-- 經歷 3（2021.09~2023.01） -->
+            <div class="relative">
+              <span class="absolute -left-[33px] sm:-left-[41px] top-1.5 w-4 h-4 rounded-full bg-sky-400 ring-4 ring-ocean-100 dark:ring-slate-900"></span>
+              <div class="bg-white dark:bg-slate-800/80 rounded-2xl p-5 border border-ocean-100 dark:border-slate-700 shadow-sm ocean-card">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium">
+                    2021.09 ～ 2023.01
+                  </span>
+                  <span class="text-xs font-medium text-teal-600 dark:text-teal-400">📍 台北市</span>
+                </div>
+                <h3 class="font-serif text-lg sm:text-xl font-bold text-slate-800 dark:text-white">
+                  文化內容策進院｜融資專案人員
+                </h3>
+                <p class="mt-2.5 text-slate-600 dark:text-slate-300">
+                  負責文化內容產業融資專案之窗口聯繫、文件檢核與行政進度追蹤，協助團隊建立有條理的資料管理流程。
+                </p>
+                <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/70 text-sm text-ocean-700 dark:text-ocean-300">
+                  <strong>✨ 實務收穫：</strong>訓練出嚴謹的結構思維、資料整理能力與高效率問題解決技巧。
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 區塊 3：專業服務項目（卡片格設計） -->
+        <section id="services" class="scroll-mt-24 bg-white/95 dark:bg-slate-900/95 border border-ocean-100 dark:border-slate-800 rounded-3xl p-6 sm:p-9 shadow-sm">
+          <div class="flex items-center gap-3 mb-7">
+            <span class="w-10 h-10 rounded-2xl bg-sky-100 dark:bg-sky-900/60 text-sky-600 dark:text-sky-300 flex items-center justify-center text-xl">
+              🤝
+            </span>
+            <div>
+              <h2 class="font-serif text-2xl font-bold text-slate-800 dark:text-white">專業資格與服務領域</h2>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Services & Qualifications — 結合專業證照與細心陪伴</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 服務卡片 1 -->
+            <div class="rounded-2xl bg-gradient-to-b from-ocean-50/80 to-white dark:from-slate-800 dark:to-slate-800/60 border border-ocean-100 dark:border-slate-700 p-6 flex flex-col justify-between ocean-card">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-700 shadow-sm flex items-center justify-center text-2xl mb-4">
+                  🏡
+                </div>
+                <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white">
+                  老人及身心障礙照護支持
+                </h3>
+                <p class="mt-3 text-slate-600 dark:text-slate-300">
+                  具備<strong class="text-ocean-700 dark:text-ocean-300">照顧服務員證照</strong>及<strong class="text-ocean-700 dark:text-ocean-300">身心障礙教保員資格</strong>，熟悉日常起居照顧、生活自理引導與個別化支持規劃。
+                </p>
+              </div>
+              <div class="mt-5 pt-4 border-t border-ocean-100/80 dark:border-slate-700 space-y-1.5 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-600 dark:text-ocean-400 font-bold shrink-0">適合對象：</span>
+                  <span class="text-slate-600 dark:text-slate-300">身心障礙福利機構、長照與日照單位、需要專業照護支持的家庭</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-ocean-600 dark:text-ocean-400 font-bold shrink-0">服務方式：</span>
+                  <span class="text-slate-600 dark:text-slate-300">機構專職服務、個別化生活支持與照護計畫執行</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 服務卡片 2 -->
+            <div class="rounded-2xl bg-gradient-to-b from-teal-50/80 to-white dark:from-slate-800 dark:to-slate-800/60 border border-teal-100 dark:border-slate-700 p-6 flex flex-col justify-between ocean-card">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-700 shadow-sm flex items-center justify-center text-2xl mb-4">
+                  🌱
+                </div>
+                <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white">
+                  社會福利與個案資源連結
+                </h3>
+                <p class="mt-3 text-slate-600 dark:text-slate-300">
+                  具備<strong class="text-teal-700 dark:text-teal-300">社會工作員資格</strong>，目前持續進修社工系碩士班，結合實務與理論，提供具條理的需求評估與資源整合。
+                </p>
+              </div>
+              <div class="mt-5 pt-4 border-t border-teal-100/80 dark:border-slate-700 space-y-1.5 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-teal-600 dark:text-teal-400 font-bold shrink-0">適合對象：</span>
+                  <span class="text-slate-600 dark:text-slate-300">社福團體、非營利組織、公部門專案及跨專業合作團隊</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-teal-600 dark:text-teal-400 font-bold shrink-0">服務方式：</span>
+                  <span class="text-slate-600 dark:text-slate-300">個案評估與追蹤、方案規劃執行、跨領域行政協調</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 區塊 4：聯絡與行動呼籲 (CTA) -->
+        <section id="contact" class="scroll-mt-24 rounded-3xl bg-gradient-to-r from-ocean-100 via-teal-50 to-sky-100 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 border border-ocean-200 dark:border-slate-700 p-7 sm:p-10 text-center shadow-sm">
+          <span class="inline-block text-3xl mb-3">💌</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white">
+            期待與您展開溫暖而踏實的合作
+          </h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
+            無論是社福機構招募、專案合作交流，或是想進一步認識我的實務經歷，都歡迎隨時來信，我會盡快與您聯繫！
+          </p>
+
+          <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="mailto:blue04061999@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-ocean-600 hover:bg-ocean-700 text-white font-medium shadow-md transition-all">
+              <span>✉️ 寄信給藍于惠</span>
+            </a>
+            <button id="copy-email-btn" type="button" data-email="blue04061999@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-white dark:bg-slate-700 hover:bg-ocean-50 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 border border-ocean-200 dark:border-slate-600 font-medium transition-colors">
+              <span id="copy-email-text">📋 複製信箱：blue04061999@gmail.com</span>
+            </button>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- 頁尾 -->
+  <footer class="mt-12 border-t border-ocean-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-serif text-slate-700 dark:text-slate-300 font-medium">
+        藍于惠 Wendy ｜ 把日子過得有條理，也把生活過得有溫度
+      </p>
+      <p class="mt-1.5">
+        © 2026 藍于惠. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 互動功能 JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. 閱讀進度條
+      const progressBar = document.getElementById('reading-progress');
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+      }, { passive: true });
+
+      // 2. 深淺色模式切換
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const htmlEl = document.documentElement;
+      
+      // 讀取本地儲存偏好
+      if (localStorage.getItem('theme') === 'dark') {
+        htmlEl.classList.add('dark');
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        htmlEl.classList.toggle('dark');
+        const isDark = htmlEl.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+
+      // 3. 手機版漢堡選單切換
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // 點擊手機選單連結後自動收合
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+
+      // 4. 數字跑動動畫
+      const counters = document.querySelectorAll('.count-up');
+      const animateCounter = (el) => {
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        const duration = 1200;
+        const startTime = performance.now();
+
+        const updateCount = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // easeOutQuart
+          const ease = 1 - Math.pow(1 - progress, 4);
+          el.textContent = Math.floor(ease * target);
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            el.textContent = target;
+          }
+        };
+        requestAnimationFrame(updateCount);
+      };
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(counter => observer.observe(counter));
+
+      // 5. 一鍵複製 Email 功能（不使用 alert，改用按鈕文字回饋）
+      const copyBtn = document.getElementById('copy-email-btn');
+      const copyText = document.getElementById('copy-email-text');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          const email = copyBtn.getAttribute('data-email');
+          try {
+            await navigator.clipboard.writeText(email);
+            const originalText = copyText.textContent;
+            copyText.textContent = '✅ 已複製信箱地址！';
+            setTimeout(() => {
+              copyText.textContent = originalText;
+            }, 2500);
+          } catch (err) {
+            copyText.textContent = '✉️ blue04061999@gmail.com';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
